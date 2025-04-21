@@ -84,10 +84,10 @@ int main() {
     }
 
     // Now we load part1 clump locations from a part1 output file
-    auto part1_clump_xyz = DEMSim.ReadClumpXyzFromCsv("/jet/home/rajkotwa/moonranger_mobility/cluster_grc_prep/17.5X_Scale/GRC_3e5.csv");
-    auto part1_clump_quaternion = DEMSim.ReadClumpQuatFromCsv("/jet/home/rajkotwa/moonranger_mobility/cluster_grc_prep/17.5X_Scale/GRC_3e5.csv");
-    auto part1_pairs = DEMSim.ReadContactPairsFromCsv("/jet/home/rajkotwa/moonranger_mobility/cluster_grc_prep/17.5X_Scale/Contact_pairs_3e5.csv");
-    auto part1_wcs = DEMSim.ReadContactWildcardsFromCsv("/jet/home/rajkotwa/moonranger_mobility/cluster_grc_prep/17.5X_Scale/Contact_pairs_3e5.csv");
+    auto part1_clump_xyz = DEMSim.ReadClumpXyzFromCsv("~/moonranger_mobility/cluster_grc_prep/17.5X_Scale/GRC_3e5.csv");
+    auto part1_clump_quaternion = DEMSim.ReadClumpQuatFromCsv("~/moonranger_mobility/cluster_grc_prep/17.5X_Scale/GRC_3e5.csv");
+    auto part1_pairs = DEMSim.ReadContactPairsFromCsv("~/moonranger_mobility/cluster_grc_prep/17.5X_Scale/Contact_pairs_3e5.csv");
+    auto part1_wcs = DEMSim.ReadContactWildcardsFromCsv("~/moonranger_mobility/cluster_grc_prep/17.5X_Scale/Contact_pairs_3e5.csv");
 
     std::vector<float3> in_xyz;
     std::vector<float4> in_quat;
