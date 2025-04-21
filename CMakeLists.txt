@@ -11,7 +11,7 @@ message("\n building DEME-only projects")
 #--------------------------------------------------------------
 
 set(TESTS
-    DEMdemo_GRCPrep_PART2
+    DEMdemo_GRCPrep_Part2
 )
 
 #--------------------------------------------------------------
