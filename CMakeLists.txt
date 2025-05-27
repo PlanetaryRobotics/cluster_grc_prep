@@ -12,6 +12,7 @@ message("\n building DEME-only projects")
 
 set(TESTS
     DEMdemo_GRCPrep_Part2
+    SoilPenetrometer
 )
 
 #--------------------------------------------------------------
