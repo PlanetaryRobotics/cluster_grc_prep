@@ -35,13 +35,14 @@ enum FAMILY : int {
 int main(int argc, char* argv[]) {
 
     if (argc != 3) {
-        std::cerr << "Usage: ./SoilPenetrometer <scale_factor> <terrain_file_path> <output_dir>" << std::endl;
+        std::cerr << "Usage: ./SoilPenetrometer <scale_factor> <terrain_file_path> <output_dir> <label>" << std::endl;
         return EXIT_FAILURE;
     }
 
     double scale_factor = std::atof(argv[1]);
     std::filesystem::path terrain_filepath = argv[2];
     std::filesystem::path out_dir = argv[3];
+    std::string label = argv[4];
 
     DEMSolver DEMSim;
     DEMSim.SetVerbosity(INFO);
@@ -247,7 +248,7 @@ int main(int argc, char* argv[]) {
     stream << std::setprecision(5) << scale_factor;
     std::string scale = stream.str();
     
-    out_dir += "/ConePenetration_" + scale + "_" + Utils::getCurrentTimeStamp();
+    out_dir += "/ConePenetration_" + scale + "_" + label + "_" + Utils::getCurrentTimeStamp();
     std::filesystem::create_directory(out_dir);
     std::cout << out_dir << std::endl;
 
