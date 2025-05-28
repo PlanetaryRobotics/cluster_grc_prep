@@ -32,17 +32,34 @@ enum FAMILY : int {
     FIXED
 };
 
+//Function that uses inputted data_dir and file label to create new directory for results
+std::filesystem::path InitializeOutputDirectories(std::filesystem::path data_dir, std::string label) {
+    std::filesystem::path out_dir = data_dir / label / Utils::getCurrentTimeStamp();
+
+    std::error_code ec;
+    if (!std::filesystem::create_directories(out_dir, ec)) {
+        throw std::runtime_error("Failed to create output directories.");
+    }
+
+    std::cout << "Output directory: " << out_dir << std::endl;
+
+    return out_dir;
+}
+
 int main(int argc, char* argv[]) {
 
     if (argc != 5) {
-        std::cerr << "Usage: ./SoilPenetrometer <scale_factor> <terrain_file_path> <output_dir> <label>" << std::endl;
+        std::cerr << "Usage: ./SoilPenetrometer <scale_factor> <terrain_file_path> <data_dir> <label>" << std::endl;
         return EXIT_FAILURE;
     }
 
     double scale_factor = std::atof(argv[1]);
     std::filesystem::path terrain_filepath = argv[2];
-    std::filesystem::path out_dir = argv[3];
+    std::filesystem::path data_dir = argv[3];
     std::string label = argv[4];
+
+    // Calls function to create output directory
+    std::filesystem::path out_dir = InitializeOutputDirectories(data_dir, label);
 
     DEMSolver DEMSim;
     DEMSim.SetVerbosity(INFO);
@@ -247,10 +264,6 @@ int main(int argc, char* argv[]) {
     std::ostringstream stream;
     stream << std::setprecision(5) << scale_factor;
     std::string scale = stream.str();
-    
-    out_dir += "/ConePenetration_" + scale + "_" + label + "_" + Utils::getCurrentTimeStamp();
-    std::filesystem::create_directory(out_dir);
-    std::cout << out_dir << std::endl;
 
     std::filesystem::path output_datafile_path = out_dir / "output.csv";
     std::cout << output_datafile_path << std::endl;
