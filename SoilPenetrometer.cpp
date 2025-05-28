@@ -34,7 +34,7 @@ enum FAMILY : int {
 
 int main(int argc, char* argv[]) {
 
-    if (argc != 3) {
+    if (argc != 5) {
         std::cerr << "Usage: ./SoilPenetrometer <scale_factor> <terrain_file_path> <output_dir> <label>" << std::endl;
         return EXIT_FAILURE;
     }
